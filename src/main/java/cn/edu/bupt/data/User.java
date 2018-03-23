@@ -1,5 +1,6 @@
 package cn.edu.bupt.data;
 
+import cn.edu.bupt.dao.BaseEntity;
 import com.datastax.driver.mapping.annotations.Column;
 import com.datastax.driver.mapping.annotations.PartitionKey;
 import com.datastax.driver.mapping.annotations.Table;
@@ -12,7 +13,7 @@ import static cn.edu.bupt.dao.ModelConstants.*;
  * Created by CZX on 2018/3/23.
  */
 @Table(name = USER_COLUMN_FAMILY_NAME)
-public class User {
+public class User implements BaseEntity {
 
 
     @PartitionKey(value = 0)
@@ -39,6 +40,10 @@ public class User {
 
     @Column(name = USER_ADDITIONAL_INFO_PROPERTY)
     private String additional_info;
+
+    public User() {
+        super();
+    }
 
     public User(User user) {
         this.id = user.getId();

@@ -60,11 +60,6 @@ public class CassandraCluster {
     }
 
 
-    /*
-    * 连接到cassandra数据库集群，
-    * 目前只需要url，其他具体配置
-    * 使用默认配置。
-    */
     @PostConstruct
     protected void init() {
         Cluster.Builder builder = Cluster.builder()

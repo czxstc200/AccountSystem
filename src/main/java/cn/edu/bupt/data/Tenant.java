@@ -1,5 +1,6 @@
 package cn.edu.bupt.data;
 
+import cn.edu.bupt.dao.BaseEntity;
 import com.datastax.driver.mapping.annotations.Column;
 import com.datastax.driver.mapping.annotations.PartitionKey;
 import com.datastax.driver.mapping.annotations.Table;
@@ -12,7 +13,7 @@ import static cn.edu.bupt.dao.ModelConstants.*;
  * Created by CZX on 2018/3/23.
  */
 @Table(name = TENANT_COLUMN_FAMILY_NAME)
-public class Tenant {
+public class Tenant implements BaseEntity {
 
     @PartitionKey(value = 0)
     @Column(name = ID_PROPERTY)

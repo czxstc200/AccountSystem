@@ -38,7 +38,7 @@ public class ModelConstants {
     public static final String USER_NAME_PROPERTY = "name";
     public static final String USER_ADDITIONAL_INFO_PROPERTY = ADDITIONAL_INFO_PROPERTY;
 
-//    public static final String USER_BY_EMAIL_COLUMN_FAMILY_NAME = "user_by_email";
+    public static final String USER_BY_EMAIL_COLUMN_FAMILY_NAME = "user_by_email";
 //    public static final String USER_BY_TENANT_AND_SEARCH_TEXT_COLUMN_FAMILY_NAME = "user_by_tenant_and_search_text";
 //    public static final String USER_BY_CUSTOMER_AND_SEARCH_TEXT_COLUMN_FAMILY_NAME = "user_by_customer_and_search_text";
 
