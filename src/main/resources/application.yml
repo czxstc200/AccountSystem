@@ -1,0 +1,8 @@
+server:
+    port: 8081
+
+cassandra:
+  contactpoints: "${CASSANDRA_CONTACTPOINTS:127.0.0.1}"
+  keyspace_name: "${CASSANDRA_KEYSPACE_NAME:BUPT_IOT}"
+  port: "${CASSANDRA_PORT:9042}"
+
