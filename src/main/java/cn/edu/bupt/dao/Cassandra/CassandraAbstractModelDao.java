@@ -83,12 +83,12 @@ public abstract class CassandraAbstractModelDao<E extends BaseEntity> extends Ca
 
     public E save(E domain) {
         E entity;
-        try {
-            entity = getColumnFamilyClass().getConstructor(domain.getClass()).newInstance(domain);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("Can't create entity for domain object {" + domain + "}", e);
-        }
-        entity = saveWithResult(entity);
+//        try {
+//            entity = getColumnFamilyClass().getConstructor(domain.getClass()).newInstance(domain);
+//        } catch (Exception e) {
+//            throw new IllegalArgumentException("Can't create entity for domain object {" + domain + "}", e);
+//        }
+        entity = saveWithResult(domain);
         return entity;
     }
 

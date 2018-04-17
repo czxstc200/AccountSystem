@@ -1,6 +1,10 @@
 package cn.edu.bupt.controller;
 
+import cn.edu.bupt.dao.device.DeviceDao;
+import cn.edu.bupt.dao.deviceCredentials.DeviceCredentialsDao;
 import cn.edu.bupt.dao.user.UserDao;
+import cn.edu.bupt.data.Device;
+import cn.edu.bupt.data.DeviceCredentials;
 import cn.edu.bupt.data.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,33 +22,47 @@ public class HelloController {
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private DeviceDao deviceDao;
+
+    @Autowired
+    private DeviceCredentialsDao deviceCredentialsDao;
+
     @RequestMapping("/")
     public String welcome(){
         return "hello";
     }
+
     @RequestMapping("/add")
     public String add(){
-        User user = new User();
-        user.setName("test");
-        user.setTenant_id(UUID.fromString("9e3d50f0-2e75-11e8-8ecc-d92ed4f0141c"));
-        user.setCustomer_id(UUID.fromString("f7637871-2e76-11e8-92bc-d92ed4f0141c"));
-        user.setAuthority("SYS_ADMIN");
-        return userDao.save(user).toString();
+        Device device = new Device();
+        device.setCustomerId(UUIDs.timeBased());
+        device.setTenantId(UUIDs.timeBased());
+        device.setLocation("1");
+        return deviceDao.save(device).toString();
 
     }
 
     @RequestMapping("/delete")
     public boolean delete(){
-        return userDao.removeById(UUID.fromString("f7637872-2e76-11e8-92bc-d92ed4f0141c"));
+        return deviceDao.removeById(UUID.fromString("9c06d1d2-4211-11e8-bb15-b363097dd18e"));
     }
 
     @RequestMapping("/findbyid")
     public String findbyid(){
-        return userDao.findById(UUID.fromString("9e3d50f2-2e75-11e8-8ecc-d92ed4f0141c")).toString();
+        return deviceDao.findById(UUID.fromString("9c06d1d2-4211-11e8-bb15-b363097dd18e")).toString();
     }
 
-    @RequestMapping("/findbyemail")
-    public String findbyemail(){
-        return userDao.findByEmail("test").toString();
+    @RequestMapping("/addc")
+    public String addc(){
+        DeviceCredentials deviceCredentials = new DeviceCredentials();
+        deviceCredentials.setDeviceId(UUID.fromString("5c31eb22-4212-11e8-8e70-b363097dd18e"));
+        deviceCredentials.setDeviceToken("test");
+        return deviceCredentialsDao.save(deviceCredentials).toString();
+    }
+
+    @RequestMapping("/findbydid")
+    public String findbydid(){
+        return deviceCredentialsDao.findByDeviceId(UUID.fromString("5c31eb22-4212-11e8-8e70-b363097dd18e")).toString();
     }
 }
