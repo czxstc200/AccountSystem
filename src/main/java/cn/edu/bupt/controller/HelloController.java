@@ -2,10 +2,8 @@ package cn.edu.bupt.controller;
 
 import cn.edu.bupt.dao.device.DeviceDao;
 import cn.edu.bupt.dao.deviceCredentials.DeviceCredentialsDao;
-import cn.edu.bupt.dao.user.UserDao;
 import cn.edu.bupt.data.Device;
 import cn.edu.bupt.data.DeviceCredentials;
-import cn.edu.bupt.data.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,8 +17,6 @@ import java.util.UUID;
 @RestController
 public class HelloController {
 
-    @Autowired
-    private UserDao userDao;
 
     @Autowired
     private DeviceDao deviceDao;
