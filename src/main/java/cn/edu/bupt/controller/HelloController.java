@@ -2,6 +2,7 @@ package cn.edu.bupt.controller;
 
 import cn.edu.bupt.dao.device.DeviceDao;
 import cn.edu.bupt.dao.deviceCredentials.DeviceCredentialsDao;
+import cn.edu.bupt.dao.page.TextPageLink;
 import cn.edu.bupt.data.Device;
 import cn.edu.bupt.data.DeviceCredentials;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,20 +34,27 @@ public class HelloController {
     public String add(){
         Device device = new Device();
         device.setCustomerId(UUIDs.timeBased());
-        device.setTenantId(UUIDs.timeBased());
+        device.setTenantId(UUID.fromString("5c31eb21-4212-11e8-8e70-b363097dd18e"));
         device.setLocation("1");
+        device.setSearchText("2");
         return deviceDao.save(device).toString();
 
     }
 
     @RequestMapping("/delete")
     public boolean delete(){
-        return deviceDao.removeById(UUID.fromString("9c06d1d2-4211-11e8-bb15-b363097dd18e"));
+        return deviceDao.removeById(UUID.fromString("1966f4f3-421e-11e8-99c1-b363097dd18e"));
     }
 
     @RequestMapping("/findbyid")
     public String findbyid(){
-        return deviceDao.findById(UUID.fromString("9c06d1d2-4211-11e8-bb15-b363097dd18e")).toString();
+        return deviceDao.findById(UUID.fromString("1966f4f3-421e-11e8-99c1-b363097dd18e")).toString();
+    }
+
+    @RequestMapping("/findbyTid")
+    public String findbyTid(){
+        TextPageLink textPageLink = new TextPageLink(2);
+        return deviceDao.findDevicesByTenantId(UUID.fromString("5c31eb21-4212-11e8-8e70-b363097dd18e"),textPageLink).toString();
     }
 
     @RequestMapping("/addc")
